@@ -7,8 +7,8 @@ Installs and configure hookforward_
 Available states
 ================
 
-`hookforward`
-----------------
+``hookforward``
+---------------
 
 Install a hookforward service.
 
