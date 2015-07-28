@@ -7,9 +7,6 @@ Installs and configure hookforward_
 Available states
 ================
 
-.. contents::
-   :backlinks: none
-
 `hookforward`
 ----------------
 
