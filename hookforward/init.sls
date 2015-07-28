@@ -41,4 +41,13 @@ setup:
     - name: hookforward
     - enable: True
     - restart: True
+{%- else %}
+teardown:
+  file.absent:
+    - name: /etc/systemd/system/hookforward.service
+  cmd.run:
+    - name: systemctl daemon-reload
+  service.dead:
+    - name: hookforward
+    - enable: False
 {%- endif %}
