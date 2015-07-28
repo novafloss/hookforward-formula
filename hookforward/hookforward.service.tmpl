@@ -1,0 +1,9 @@
+[Unit]
+Description=Hookforward
+
+[Service]
+ExecStart=/usr/local/bin/hookforward start {{ db_url }} {{ webhook_url }}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
