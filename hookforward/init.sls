@@ -47,7 +47,9 @@ teardown:
     - name: /etc/systemd/system/hookforward.service
   cmd.run:
     - name: systemctl daemon-reload
+{%  if salt.service.available('hookforward') -%}
   service.dead:
     - name: hookforward
     - enable: False
+{%- endif %}
 {%- endif %}
