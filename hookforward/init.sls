@@ -1,5 +1,5 @@
 {% set db_url = salt.pillar.get('hookforward:db_url') -%}
-{% set webhook_url = salt.pillar.get('hookforward:webhook_url') -%}
+{% set notify_url = salt.pillar.get('hookforward:notify_url') -%}
 
 curl:
   pkg.latest
@@ -24,7 +24,7 @@ hookforward:
     - require:
       - pkg: npm
 
-{%  if db_url and webhook_url -%}
+{%  if db_url and notify_url -%}
 setup:
   file.managed:
     - name: /etc/systemd/system/hookforward.service
@@ -34,7 +34,7 @@ setup:
       - npm: hookforward
     - context:
       db_url: {{ db_url }}
-      webhook_url: {{ webhook_url }}
+      notify_url: {{ notify_url }}
   cmd.run:
     - name: systemctl daemon-reload
   service.running:
